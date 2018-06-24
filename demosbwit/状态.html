@@ -11,13 +11,13 @@
 <pre>
 状态: state
     state在React中非常重要， 函数定义组件形式没有状态，只能通过Class
-修改状态： this.setState({});
-    用此函数设置状态， 设置完成以后，视图会自动更新。
+修改状态： this.setState({});    用此函数设置状态， 设置完成以后，视图会自动更新。
 
     this.setState(state,fnCallBack);    fnCallBack 回调函数 是在状态设置成功才会触发
 </pre>
 <div id="root"></div>
 <div id="root1"></div>
+<div id="root2"></div>
 
 <script type="text/babel">
 
@@ -65,7 +65,6 @@
                 });
             }, 1000);
         }
-
 
         render() {
             return (<div>

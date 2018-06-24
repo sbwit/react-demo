@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<pre>
+                事件                              阻止默认行为              阻止冒泡
+传统HTML： <input onclick="show" />            return  false             ev.cancelBubble = true;
+React中    <input onclick={show} />            ev.preventDefault         ev.nativeEvent.stoplmmediatePropagation()
+
+
+
+ev:
+</pre>
+<div id="root"></div>
+<div id="root1"></div>
+
+<script type="text/babel">
+    // this  绑定的几种方式
+    class Demo extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                msg: "aaaaaaaaaaaaaaaaaaaa"
+            }
+
+            this.handleClick2= this.handleClick1.bind(this);
+        }
+
+        handleClick1(ev) {
+            this.setState({
+                msg:Date.now()
+            });
+        }
+        handleClick2(ev) {
+            this.setState({
+                msg:Date.now()
+            });
+        }
+
+        handleClick3(ev) {
+            this.setState({
+                msg:Date.now()
+            });
+        }
+        handleClick4 = ()=>{
+            this.setState({
+                msg:Date.now()
+            });
+        }
+        render() {
+            return (<div>
+                <button onClick={this.handleClick1.bind(this)}>按钮1</button>
+                <button onClick={this.handleClick2}>按钮2</button>
+                <button onClick={()=> this.handleClick3()}>按钮3</button>
+                <button onClick={this.handleClick4}>按钮4</button>
+                <div>{this.state.msg}</div>
+
+            </div>)
+        }
+
+    }
+
+    ReactDOM.render(<Demo/>, document.getElementById("root"));
+
+</script>
+
+<script type="text/babel">
+    // 事件 ev 使用
+    class Demo2 extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                msg: "aaaaaaaaaaaaaaaaaaaa"
+            }
+
+
+        }
+
+        handleClick1(ev) {
+            this.setState({
+                msg:Date.now()
+            });
+        }
+        // 传参 ev 是放在最后面的
+        handleClick2(aa,ev) {
+            this.setState({
+                msg:Date.now()
+            });
+            alert(aa)
+            ev.preventDefault(); //阻止默认事件；
+        }
+
+        render() {
+            return (<div>
+                <button onClick={this.handleClick1.bind(this)}>按钮1</button>
+                <button onClick={this.handleClick2.bind(this,123)}>按钮1</button>
+                <div>{this.state.msg}</div>
+
+            </div>)
+        }
+
+    }
+
+    ReactDOM.render(<Demo/>, document.getElementById("root1"));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<pre>
+Key 只要确保是唯一，
+</pre>
+<div id="root"></div>
+<div id="root1"></div>
+
+<script type="text/babel">
+
+    const ListItem = ({value}) => <li> {value}</li>;
+
+    class App extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                arr: ['apple', 'banana', 'orange', 'pear']
+            }
+        }
+
+
+        render() {
+            let arr = this.state.arr.map((v, i) =>
+                (
+                    <li key={i}>
+                        <strong>{v}</strong>
+                    </li>
+                )
+            );
+
+            let arr2 = this.state.arr.map((val, index) => (<ListItem key={index} value={val}/>))
+            return (<div>
+                {arr}
+                {arr2}
+            </div>)
+        }
+    }
+
+
+    ReactDOM.render(
+        <App/>
+        , document.getElementById("root"));
+
+</script>
+</body>
+</html>
