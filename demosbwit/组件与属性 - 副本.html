@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="root"></div>
+<div id="root1"></div>
+<div id="root2"></div>
+<div id="root3"></div>
+<script type="text/babel">
+    function Title(props) { // 函数定义的 组件与属性
+        console.log(props)
+        return <h3>{props.name}</h3>
+    }
+
+
+    ReactDOM.render(
+        <div>
+            <Title name="体育标题" hot="200"/>
+        </div>
+        , document.getElementById("root"));
+
+    const Title3 = ({name, hot}) => <h3>{name} {hot}</h3>;  //箭头函数定义组件与属性
+    ReactDOM.render(
+        <div>
+            <Title3 name="体育标题" hot="200"/>
+        </div>
+        , document.getElementById("root1"));
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    // class 定义组件与属性方式：
+    class Title2 extends React.Component {
+
+        render() {
+            let {name, hot} = this.props;
+            return <h4>{name} {hot}</h4>
+        }
+    }
+
+    ReactDOM.render(
+        <div>
+            <Title2 name="体育标题CLASS" hot="200"/>
+            <Title2 name="IT标题CLASS" hot="300"/>
+            <Title2 name="娱乐标题CLASS" hot="500"/>
+        </div>
+        , document.getElementById("root2"));
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    class App extends React.Component {   //组件嵌套
+
+        render() {
+            let {name, hot} = this.props;
+            return (<div>
+                <Title2 name="体育标题CLASS" hot="200"/>
+                <Title2 name="IT标题CLASS" hot="300"/>
+                <Title2 name="娱乐标题CLASS" hot="500"/>
+
+            </div>);
+        }
+    }
+
+    ReactDOM.render(
+        <div>
+            <App/>
+        </div>
+        , document.getElementById("root3"));
+
+</script>
+</body>
+</html>
