@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../react.js"></script>
+    <script src="../react-dom.js"></script>
+    <script src="../browser.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    function List({arr}) {
+        return <ul>
+            {
+                arr.map((val, index) => {
+                    <li key={index}> {val}</li>
+                })
+            }
+        </ul>
+    }
+
+    class App extends React.Component {
+
+        constructor(props) {
+            super(props)
+            this.state = {
+                value: "",
+                testArr: ["apple", "banana", "orange"]
+
+            }
+        }
+
+        handleChange(ev) {
+            this.setState({
+                value: ev.target.value,
+            })
+        };
+
+        handleSubmit(ev) {
+            let newArr = [...this.state.testArr];
+            console.log(newArr)
+            newArr.push(this.state.value);
+            this.setState({
+                testArr: newArr
+            })
+            ev.preventDefault();
+        }
+
+        handleDel(index) {
+            let testArr = [...this.state.testArr];
+            testArr.splice(index, 1);
+            this.setState({testArr});
+        }
+
+
+        render() {
+            return (
+                <div>
+                    <form onSubmit={this.handleSubmit.bind(this)}>
+                        <input type="text" placeholder="请输入名字" value={this.state.value}
+                               onChange={this.handleChange.bind(this)}/>
+                        <button>添加</button>
+                    </form>
+                    <ul>
+                        {
+                            this.state.testArr.map(function (val, index) {
+                                return <li key={index}>
+                                    {val}
+                                    <a href="javascript:;" onClick={() => this.handleDel(index).bind(this)}>删除</a>
+                                </li>
+                            })
+                        }
+                    </ul>
+                    <List arr={this.state.testArr}/>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <App/>
+        , document.getElementById("root"));
+
+</script>
+</body>
+</html>
