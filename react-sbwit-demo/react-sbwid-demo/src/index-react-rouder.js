@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter, Route, Link} from 'react-router-dom';
+import {HashRouter, Router} from 'react-router-dom';
 
 const About = () => (
     <div>
@@ -17,8 +17,8 @@ const Header = () => (
     <div>
         <h3> React-Rouder 路由</h3>
         <ul>
-            <li><Link to="#/home">主页</Link></li>
-            <li><Link to="#/about">关于</Link></li>
+            <li><a href="#/home">主页</a></li>
+            <li><a href="#/about">关于</a></li>
         </ul>
     </div>
 )
