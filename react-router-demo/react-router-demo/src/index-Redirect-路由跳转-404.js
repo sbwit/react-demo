@@ -1,15 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, NavLink, Switch, Redirect} from 'react-router-dom';
+import {BrowserRouter, Route, NavLink, Switch} from 'react-router-dom';
 import uuid from "uuid";
-import {TransitionGrop, CSSTransition} from "react-transition-group";
-import 'animate.css';
-/*
-
-路由配合运动：安装
-react-transtion-group
-animate.css
-*/
 
 const stuData = {
     stuList: [
@@ -60,8 +52,6 @@ class StuInfo extends React.Component {
             </div>
         )
     }
-
-
 }
 
 const StuMain = () => (
@@ -103,29 +93,13 @@ const NotFound = () => (
 )
 const Main = () => (
     <div>
-        <TransitionGrop>
-            <CSSTransition
-                key={Math.random()}
-                timeout={{
-                    enter: 500,
-                    exit: 0
-                }}
-                classNames={{
-                    enter: "animated",
-                    enterActive: "tada",
-                    exit: "animated",
-                    exitActive: "fadeOut"
-                }}
-            >
-                <Switch>
-                    <Route path="/home" component={Home}/>
-                    <Route path="/about" component={About}/>
-                    <Route path="/stu" component={Stu}/>
-                    <Redirect exact path="/" to="/home"/>
-                    <Route component={NotFound}/>
-                </Switch>
-            </CSSTransition>
-        </TransitionGrop>
+        <Switch>
+            <Route path="/home" component={Home}/>
+            <Route path="/about" component={About}/>
+            <Route path="/stu" component={Stu}/>
+            <Redirect exact path="/" to="/home"/>
+            <Route component={NotFound}/>
+        </Switch>
     </div>
 );
 

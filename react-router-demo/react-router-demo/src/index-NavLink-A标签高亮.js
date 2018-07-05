@@ -2,14 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Route, NavLink, Switch, Redirect} from 'react-router-dom';
 import uuid from "uuid";
-import {TransitionGrop, CSSTransition} from "react-transition-group";
-import 'animate.css';
-/*
-
-路由配合运动：安装
-react-transtion-group
-animate.css
-*/
 
 const stuData = {
     stuList: [
@@ -34,10 +26,6 @@ const Home = () => (
 );
 
 class StuInfo extends React.Component {
-    goBack = () => {
-        this.props.history.goBack();
-    }
-
     render() {
         let {id} = this.props.match.params;
         console.log(id)
@@ -54,9 +42,6 @@ class StuInfo extends React.Component {
                 <label>学生编号：{stuInfo.name}</label><br/>
                 <label>学生编号：{stuInfo.sex}</label><br/>
                 <label>学生编号：{stuInfo.tel}</label><br/>
-                <label>
-                    <button onClick={this.goBack}> 返回</button>
-                </label>
             </div>
         )
     }
@@ -96,36 +81,15 @@ const Header = () => (
         </ul>
     </div>
 )
-const NotFound = () => (
-    <div>
-        <h3>404</h3>
-    </div>
-)
+
 const Main = () => (
     <div>
-        <TransitionGrop>
-            <CSSTransition
-                key={Math.random()}
-                timeout={{
-                    enter: 500,
-                    exit: 0
-                }}
-                classNames={{
-                    enter: "animated",
-                    enterActive: "tada",
-                    exit: "animated",
-                    exitActive: "fadeOut"
-                }}
-            >
-                <Switch>
-                    <Route path="/home" component={Home}/>
-                    <Route path="/about" component={About}/>
-                    <Route path="/stu" component={Stu}/>
-                    <Redirect exact path="/" to="/home"/>
-                    <Route component={NotFound}/>
-                </Switch>
-            </CSSTransition>
-        </TransitionGrop>
+        <Switch>
+            <Route exact path="/home" component={Home}/>
+            <Route path="/about" component={About}/>
+            <Route path="/stu" component={Stu}/>
+            <Redirect path="/" to="/home"/>
+        </Switch>
     </div>
 );
 
