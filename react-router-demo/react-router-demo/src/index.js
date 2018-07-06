@@ -40,7 +40,7 @@ class StuInfo extends React.Component {
 
     render() {
         let {id} = this.props.match.params;
-        console.log(id)
+        console.log(id);
         let stuInfo = stuData.stuList.find((item) => {
             return item.id === id;
         });
