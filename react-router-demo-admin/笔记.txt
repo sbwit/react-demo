@@ -16,4 +16,10 @@
 	cnpm i uuid -D
 
 
+路由拦截：
+	权限、登录认证、
 
+	PrivateRouter 组件：
+		检测登录 -> 想展示页面
+					true ->想展示页面
+					false -> 登录页面

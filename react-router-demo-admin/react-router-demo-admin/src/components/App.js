@@ -1,8 +1,10 @@
 import React from 'react';
-import {BrowserRouter, Route, NavLink} from 'react-router-dom';
+import {BrowserRouter, Route, NavLink, Redirect} from 'react-router-dom';
 import Home from "./Home";
 import User from "./User";
 import Profile from "./Profile";
+import PrivateRouter from "./PrivateRouter";
+import Login from "./Login";
 
 export default (
     <BrowserRouter>
@@ -32,7 +34,9 @@ export default (
             <div className="container mt-3">
                 <Route path="/home" component={Home}/>
                 <Route path="/user" component={User}/>
-                <Route path="/profile" component={Profile}/>
+                <Route path="/login" component={Login}/>
+                {/*<Route path="/profile" component={Profile}/>*/}
+                <PrivateRouter path="/profile" component={Profile}/>
             </div>
         </div>
     </BrowserRouter>

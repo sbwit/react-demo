@@ -1,5 +1,5 @@
 import React from "react"
-import {Route, NavLink, Switch} from "react-router-dom"
+import {Route, NavLink, Switch, Redirect} from "react-router-dom"
 import UserAdd from './UserAdd'
 import UserList from './UserList'
 import UserDetail from './UserDetail'
@@ -25,6 +25,7 @@ class User extends React.Component {
                         <Route path="/user/list" component={UserList}/>
                         <Route path="/user/add" component={UserAdd}/>
                         <Route path="/user/detail/:id" component={UserDetail}/>
+                        <Redirect path="/user" to="/user/list"></Redirect>
                     </Switch>
                 </div>
             </div>
