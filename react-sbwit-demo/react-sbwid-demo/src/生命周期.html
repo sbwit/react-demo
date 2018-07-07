@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<pre>
+状态: state
+    state在React中非常重要， 函数定义组件形式没有状态，只能通过Class
+修改状态： this.setState({});
+    用此函数设置状态， 设置完成以后，视图会自动更新。
+
+    this.setState(state,fnCallBack);    fnCallBack 回调函数 是在状态设置成功才会触发
+========================================================================
+生命周期构造函数：
+    1. componentWillMount:   组件挂载前
+    2. componentDidMount:    组件挂载后
+    3. componentWillUpdate： 组件更新前
+    4. componentDidUpdate：  组件更新后
+    5. componentWillUnmount：组件卸载
+
+在React中阻止冒泡：
+    ev.nativeEvent.stoplmmediatePropagation();
+
+</pre>
+<div id="root"></div>
+<div id="root1"></div>
+
+<script type="text/babel">
+
+    class MyComponent extends React.Component {
+        constructor(props) {
+            super(props);
+
+            this.state = {
+                count: 0,
+            }
+        }
+
+        componentWillMount() {
+            console.log("组件挂载前")
+        }
+
+        componentDidMount() {
+            console.log("组件挂载后")
+        }
+
+        componentWillUpdate() {
+            console.log("组件更新前")
+        }
+
+        componentDidUpdate() {
+            console.log("组件更新后")
+        }
+
+        componentWillUnmount() {
+            console.log("组件卸载")
+        }
+
+        fnClick() {
+            this.setState({
+                count: this.state.count + 1,
+            });
+        }
+
+        render() {
+            return (<div>
+                <h3>{this.state.count}</h3>
+                <button onClick={this.fnClick.bind(this)}> 增加</button>
+                <button onClick={destory}> 烧毁</button>
+            </div>)
+        }
+    }
+
+    function destory() {
+        ReactDOM.render(
+            <span>这个销毁root后留下来的垃圾........</span>
+            , document.getElementById("root"));
+        ReactDOM.render(
+            <span>这个销毁root1后留下来的垃圾........</span>
+            , document.getElementById("root1"));
+    }
+
+    ReactDOM.render(
+        <MyComponent/>
+        , document.getElementById("root"));
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    class Tick extends React.Component {
+        constructor(props) {
+            super(props);
+
+            this.state = {
+                time: new Date(),
+            };
+        }
+
+        componentDidMount() {   //组件挂载后 执行定时器
+            this.timer = setInterval(() => {
+                this.setState({
+                    time: new Date(),
+                });
+            }, 1000);
+        }
+
+        componentWillUnmount() {   //组件卸载后 销毁定时器
+            clearInterval(this.timer);
+        }
+
+        render() {
+            return (<div>
+                <h3>这是一个时钟：</h3>
+                <h3>{this.state.time.toLocaleTimeString()}</h3>
+            </div>)
+        }
+    }
+
+    ReactDOM.render(
+        <Tick/>
+        , document.getElementById("root1"));
+
+</script>
+</body>
+</html>
