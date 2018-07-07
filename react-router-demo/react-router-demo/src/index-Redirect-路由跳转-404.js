@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, NavLink, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, NavLink, Switch, Redirect} from 'react-router-dom';
 import uuid from "uuid";
 
 const stuData = {

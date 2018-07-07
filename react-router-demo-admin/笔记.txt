@@ -1,0 +1,19 @@
+后台BOSS管理：
+	|-components/
+		|-Home.js
+		|-App.js
+		|-User.js
+		|-Profile.js
+		|-UserList.js
+		|-UserAdd.js
+		|-Login.js
+		|-Logout.js
+	|-index.js
+
+下载相应模块：
+	cnpm i react-router-dom -D
+	cnpm i bootstrap -D
+	cnpm i uuid -D
+
+
+
