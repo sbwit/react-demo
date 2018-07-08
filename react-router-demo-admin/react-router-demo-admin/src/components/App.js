@@ -1,15 +1,20 @@
 import React from 'react';
-import {BrowserRouter, Route, NavLink, Redirect} from 'react-router-dom';
+import {BrowserRouter, Route, NavLink, Switch, Redirect} from 'react-router-dom';
 import Home from "./Home";
 import User from "./User";
 import Profile from "./Profile";
 import PrivateRouter from "./PrivateRouter";
 import Login from "./Login";
+import TipButton from "./TipButton";
+import NotFound from "./NotFound";
 
 export default (
     <BrowserRouter>
         <div>
             <div className="full-container">
+                <div className="container">
+                    <TipButton/>
+                </div>
                 <nav className="navbar navbar-dark bg-primary">
                     <div className="col-md-4">
                         <div className="navbar-brand">
@@ -32,11 +37,15 @@ export default (
                 </nav>
             </div>
             <div className="container mt-3">
-                <Route path="/home" component={Home}/>
-                <Route path="/user" component={User}/>
-                <Route path="/login" component={Login}/>
-                {/*<Route path="/profile" component={Profile}/>*/}
-                <PrivateRouter path="/profile" component={Profile}/>
+                <Switch>
+
+                    <Route path="/home" component={Home}/>
+                    <Route path="/user" component={User}/>
+                    <Route path="/login" component={Login}/>
+                    {/*<Route path="/profile" component={Profile}/>*/}
+                    <PrivateRouter path="/profile" component={Profile}/>
+                    <Route component={NotFound}/>
+                </Switch>
             </div>
         </div>
     </BrowserRouter>

@@ -4,7 +4,7 @@ export default {
         this.isAuth = true;
         setTimeout(cb, 500);
     },
-    logout(cb) {
+    authLogout(cb) {
         this.isAuth = false;
         setTimeout(cb, 500)
     }
