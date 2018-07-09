@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import fetchJsonp from 'fetch-jsonp';
-
+improt from 'momone'
 
 function MyFetchJsonp(url, options) {
     return fetchJsonp(url, options).then(res => {
