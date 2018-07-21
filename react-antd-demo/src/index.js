@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CreateFormPage from './components/CreateFormPage';
+import CreateFormPageFrom from './components/CreateFormPage';
 
-ReactDOM.render(<CreateFormPage />, document.getElementById('root'));
+ReactDOM.render(<CreateFormPageFrom />, document.getElementById('root'));
