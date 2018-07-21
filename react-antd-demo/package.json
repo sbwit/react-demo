@@ -2,6 +2,7 @@
   "name": "react-antd-demo",
   "version": "0.1.0",
   "private": true,
+  "theme": "./theme.js",
   "dependencies": {
     "antd": "^3.7.0",
     "react": "^16.4.1",
