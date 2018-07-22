@@ -8,7 +8,7 @@ class PriceInput extends React.Component {
 
     const value = this.props.value || {};
     this.state = {
-     
+      number: "",
       currency: value.currency || '360',
     };
   }
