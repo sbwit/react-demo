@@ -1,0 +1,22 @@
+BOSS管理：
+	|-components
+        |-user
+            |-UserQuery.js
+            |-UserList.js
+		    |-UserAdd.js
+		|-home
+            |-Home.js
+		|-layout
+            |-CommonLayout.js
+		|-promo
+            |-activity
+                |-ActivityCreate.js
+                |-ActivityQuery.js
+                |-ActivityDetail.js
+            |-award
+                |-AwardCreate.js   
+                |-AwardQuery.js   
+                |-AwardDetail.js   
+		|-Login.js
+		|-Logout.js
+	|-index.js
