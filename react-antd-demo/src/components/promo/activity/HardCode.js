@@ -110,4 +110,13 @@ const StatusEnum =[
         value:"DRAFT"
     }
 ];
-export {TypeEnum,SubTypeEnum,TriggerTypeEnum,AppliedBizTypeEnum,BizSubTypeEnum,EnvNameEnum,HoldModeEnum,PriorityEnum,SceneEnum}
+const CategoryEnum =[
+    {
+        label:"DRAFT2",
+        value:"DRAFT2"
+    }, {
+        label:"DRAFT3",
+        value:"DRAFT3"
+    }
+];
+export {TypeEnum,SubTypeEnum,TriggerTypeEnum,AppliedBizTypeEnum,BizSubTypeEnum,EnvNameEnum,HoldModeEnum,PriorityEnum,SceneEnum,StatusEnum,CategoryEnum}

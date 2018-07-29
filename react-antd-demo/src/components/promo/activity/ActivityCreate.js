@@ -1,6 +1,18 @@
 import React from "react";
 import { Form, Row, Col, Input, Button, Card,Select} from "antd";
-import {TypeEnum,SubTypeEnum,TriggerTypeEnum,AppliedBizTypeEnum,BizSubTypeEnum,EnvNameEnum,HoldModeEnum,PriorityEnum,SceneEnum} from "./HardCode"
+import {
+    TypeEnum,
+    SubTypeEnum,
+    TriggerTypeEnum,
+    AppliedBizTypeEnum,
+    BizSubTypeEnum,
+    EnvNameEnum,
+    HoldModeEnum,
+    CategoryEnum,
+    PriorityEnum,
+    SceneEnum,
+    StatusEnum,
+} from "./HardCode"
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -208,7 +220,13 @@ class ActivityCreate extends React.Component{
                                 {getFieldDecorator(`bizSubType`,{
                                 // rules: [{}]
                                 })(
-                                    <Input placeholder="Please Input Biz Sub Type" />
+                                    <Select placeholder="Please Input Biz Sub Type">
+                                    {
+                                        BizSubTypeEnum.map((item,index)=>(
+                                             <Option  key={index} key={index} value={item.label}>{item.value}</Option>
+                                       ))
+                                    }
+                                    </Select>
                                 )}
                             </FormItem>    
                         </Col> 
@@ -217,7 +235,13 @@ class ActivityCreate extends React.Component{
                                 {getFieldDecorator(`category`,{
                                 // rules: [{}]
                                 })(
-                                    <Input placeholder="Please Input Category" />
+                                    <Select placeholder="Please Input Category">
+                                    {
+                                        CategoryEnum.map((item,index)=>(
+                                             <Option  key={index} key={index} value={item.label}>{item.value}</Option>
+                                       ))
+                                    }
+                                    </Select>
                                 )}
                             </FormItem> 
                         </Col>
