@@ -37,7 +37,7 @@ class QueryForm extends React.Component{
                     <Row >
                         <Col span={12} style={{ textAlign: 'right' }}>
                             <FormItem label='Activity ID' {...formItemLayout}>
-                                {getFieldDecorator(`activityID`,{
+                                {getFieldDecorator(`activityId`,{
                                 // rules: [{}]
                                 })(
                                     <Input placeholder="Input is Activity ID" />
