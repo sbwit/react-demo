@@ -98,18 +98,19 @@ interface StringArray {
     [index: number]: string;
   }
   
-  let myArray: StringArray;
-  myArray = ["Bob", "Fred"];
-  
-  let myStr: string = myArray[0];
+let myArray: StringArray;
+myArray = ["Bob", "Fred"];
 
-//   可以将索引签名设置为只读，这样就防止了给索引赋值
+let myStr: string = myArray[0];
+console.log("可索引的类型myStr:"+ myStr)
+
+// 可以将索引签名设置为只读，这样就防止了给索引赋值
 interface ReadonlyStringArray {
     readonly [index: number]: string;
 }
 let myArray2: ReadonlyStringArray = ["Alice", "Bob"];
 // myArray2[2] = "Mallory"; // error!
-
+console.log("可索引的类型myArray2:"+ myArray2)
 
 
 //函数类型 像是一个只有参数列表和返回值类型的函数定义。参数列表里的每个参数都需要名字和类型。
@@ -119,7 +120,36 @@ interface SearchFunc {
 
 //   如何创建一个函数类型的变量，并将一个同类型的函数赋值给这个变量。
 let mySearch: SearchFunc;
-mySearch = function(source: string, subString: string) {
+mySearch = function(source: string, subString: string) : boolean {
   let result = source.search(subString);
   return result > -1;
 }
+console.log("函数类型测试："+ mySearch("testadabc","abc"))
+//========================================================================
+// 类静态部分与实例部分的区别
+interface ClockConstructor {
+  new (hour: number, minute: number): ClockInterface;
+}
+interface ClockInterface {
+  tick();
+}
+function createClock(ctor: ClockConstructor, hour: number, minute: number): ClockInterface {
+  return new ctor(hour, minute);
+}
+
+class DigitalClock implements ClockInterface {
+  constructor(h: number, m: number) { }
+  tick() {
+      console.log("beep beep");
+  }
+}
+class AnalogClock implements ClockInterface {
+  constructor(h: number, m: number) { }
+  tick() {
+      console.log("tick tock");
+  }
+}
+let digital = createClock(DigitalClock, 12, 17);
+console.log("类静态部分与实例部分的区别"+digital.tick())
+let analog = createClock(AnalogClock, 7, 32);
+console.log("类静态部分与实例部分的区别"+analog.tick())
