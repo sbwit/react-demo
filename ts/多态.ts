@@ -1,24 +1,26 @@
-interface IUser{
-    name:string
+interface IUser {
+  name: string;
 }
 
-class Tom implements IUser{
-    name:string
-    constructor(name:string) {
-        this.name = name;
-    }
+class Tom implements IUser {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  age: number;
 }
 class Jim implements IUser {
-    name:string
-    constructor(name:string) {
-        this.name = name;
-    }
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  age: number;
 }
-class Teacher{
-    user:IUser
-    callUserName() {
-        console.log(this.user.name)
-    }
+class Teacher {
+  user: IUser;
+  callUserName() {
+    console.log(this.user.name);
+  }
 }
 let t = new Tom("tom");
 let j = new Jim("jim");
