@@ -21,7 +21,21 @@ interface Lee3{
 interface Lee4 extends Lee3 ,Lee2{
 
 }
+//====================
+interface Shape {
+    color: string;
+}
+interface PenStroke {
+    penWidth: number;
+}
+interface Square extends Shape , PenStroke{
+    sideLength: number;
+}
 
+let square = <Square>{};
+square.color = "blue";
+square.sideLength = 10;
+square.penWidth = 5.0;
 
 
 /*
@@ -79,3 +93,33 @@ let ro: ReadonlyArray<number> = a5;
 // ro.push(5); // error!
 // ro.length = 100; // error!
 // a = ro; // error!
+//可索引的类型
+interface StringArray {
+    [index: number]: string;
+  }
+  
+  let myArray: StringArray;
+  myArray = ["Bob", "Fred"];
+  
+  let myStr: string = myArray[0];
+
+//   可以将索引签名设置为只读，这样就防止了给索引赋值
+interface ReadonlyStringArray {
+    readonly [index: number]: string;
+}
+let myArray2: ReadonlyStringArray = ["Alice", "Bob"];
+// myArray2[2] = "Mallory"; // error!
+
+
+
+//函数类型 像是一个只有参数列表和返回值类型的函数定义。参数列表里的每个参数都需要名字和类型。
+interface SearchFunc {
+    (source: string, subString: string): boolean;
+  }
+
+//   如何创建一个函数类型的变量，并将一个同类型的函数赋值给这个变量。
+let mySearch: SearchFunc;
+mySearch = function(source: string, subString: string) {
+  let result = source.search(subString);
+  return result > -1;
+}
